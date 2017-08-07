@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.book.BookActivity"></activity>
+        <activity android:name=".ui.book.BookActivity" />
+        <activity android:name=".ui.post.PostActivity" />
+        <activity android:name=".ui.source.SourceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.news.NewsActivity"></activity>
     </application>
 
 </manifest>

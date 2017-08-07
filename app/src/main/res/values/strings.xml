@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">simple-library-app-kotlin</string>
+    <string name="app_name">My Application</string>
+
+    <string name="no_article">Article Not Found</string>
 </resources>

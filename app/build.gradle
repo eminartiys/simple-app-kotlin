@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 25
@@ -19,12 +21,66 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
+ext {
+    picassoVersion = "2.5.2"
+    autoValueVersion = "1.1"
+    rxJavaVersion = "1.2.7"
+    rxAndroidVersion = "1.2.1"
+    rxLifecycleVersion = "1.0"
+    okhttp3AdapterVersion = "1.0.2"
+    retrofitVersion = "2.2.0"
+    okHttpVersion = "3.6.0"
+    okHttpAndroidSupportVersion = "2.4.0"
+    daggerVersion = "2.5"
+    supportLibraryVersion = '25.3.1'
+    sqlbriteVersion = "1.1.1"
+    butterKnifeVersion = "7.0.1"
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    //noinspection GradleCompatible
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.android.support:design:$supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    compile "com.android.support:design:$supportLibraryVersion"
+
+    compile "com.squareup.okhttp:okhttp-android-support:$okHttpAndroidSupportVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$okhttp3AdapterVersion"
+
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    compile "com.squareup.picasso:picasso:$picassoVersion"
+
+    compile "io.reactivex:rxjava:$rxJavaVersion"
+    compile "io.reactivex:rxandroid:$rxAndroidVersion"
+    compile "com.trello:rxlifecycle:$rxLifecycleVersion"
+    compile "com.trello:rxlifecycle-components:$rxLifecycleVersion"
+
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+}
+
+repositories {
+    mavenCentral()
 }
