@@ -7,12 +7,14 @@ import com.application.library.kotlin.data.repository.source.SourceRepository
 /**
  * Created by eminartiys on 8/5/17.
  */
-class SourcePresenter(val view : SourceContract.View, val repository: SourceRepository)
+class SourcePresenter(private val view : SourceContract.View,
+                      private val repository: SourceRepository)
     : SourceContract.Presenter {
 
-    fun setViewToPresenter() {
+    init {
         this.view.setPresenter(this)
     }
+
 
     override fun getData() {
         repository.getSource(object : SourceDataSource.LoadDataCallback {
@@ -29,30 +31,3 @@ class SourcePresenter(val view : SourceContract.View, val repository: SourceRepo
 
 }
 
-//public class SourcePresenter implements SourceContract.Presenter {
-//
-//    private SourceContract.View view;
-//    private SourceRepository repository;
-//
-//    public SourcePresenter(SourceContract.View view, SourceRepository repository) {
-//        this.repository = repository;
-//        this.view = view;
-//
-//        this.view.setPresenter(this);
-//    }
-//
-//    @Override
-//    public void getData() {
-//        repository.getSource(new SourceDataSource.LoadDataCallback() {
-//            @Override
-//            public void onDataLoaded(SourceResponse sourceResponse) {
-//                view.updateView(sourceResponse);
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//
-//            }
-//        });
-//    }
-//}

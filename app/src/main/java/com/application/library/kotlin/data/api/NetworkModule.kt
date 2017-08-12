@@ -55,6 +55,6 @@ class NetworkModule () {
 
     @Provides
     internal  fun provideSourceService(retrofit: Retrofit) : SourceService {
-        return retrofit.create<SourceService>(SourceService::class.java!!)
+        return retrofit.create<SourceService>(SourceService::class.java)
     }
 }
