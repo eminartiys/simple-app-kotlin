@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseTheme">
+        <attr name="defaultBackground" format="reference"/>>
+        <attr name="actionBarColor" format="reference"/>
+        <attr name="actionBarColorInverse" format="reference"/>
+
+    </declare-styleable>
+</resources>

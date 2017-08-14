@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.Toolbar
+import android.support.v7.widget.Toolbar
 import com.application.library.kotlin.Injector
 
 import com.application.library.kotlin.R
@@ -12,6 +12,10 @@ import com.application.library.kotlin.data.api.model.SourceResponse
 import com.application.library.kotlin.data.repository.source.SourceRepository
 import com.application.library.kotlin.ui.source.SourceContract.Presenter
 import javax.inject.Inject
+
+/**
+ * Created by eminartiys on 8/4/17.
+ */
 
 class SourceActivity() : AppCompatActivity(), SourceContract.View {
 
@@ -33,6 +37,8 @@ class SourceActivity() : AppCompatActivity(), SourceContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_source)
 
+        setSupportActionBar(toolbar)
+
         Injector.obtain(this)!!.inject(this)
 
         SourcePresenter(this, repository)
@@ -53,59 +59,3 @@ class SourceActivity() : AppCompatActivity(), SourceContract.View {
         this.presenter = presenter
     }
 }
-
-
-//private SourceAdapter adapter;
-//private SourceContract.Presenter presenter;
-//
-//@Override
-//protected void onCreate(Bundle savedInstanceState) {
-//    super.onCreate(savedInstanceState);
-//    setContentView(R.layout.activity_source);
-//
-//    ButterKnife.bind(this);
-//
-//    Injector.obtain(this).inject(this);
-//
-//    new SourcePresenter(this, repository);
-//
-//    setupRecyclerView();
-//}
-//
-//@Override
-//public void onResume() {
-//    super.onResume();
-//    presenter.getData();
-//}
-//
-//private void setupRecyclerView() {
-//    adapter = new SourceAdapter();
-//
-//    adapter.setItemClickListener(new BaseViewAdapter.ItemClickListener() {
-//        @Override
-//        public void onItemClickListener(Object item) {
-//            if (item instanceof SourceResponse.Sources) {
-//                SourceResponse.Sources sources = (SourceResponse.Sources) item;
-//
-//                Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-//                intent.putExtra("source", sources.name);
-//                startActivity(intent);
-//            }
-//        }
-//    });
-//
-//    list.setLayoutManager(new GridLayoutManager(this, 2));
-//    list.setAdapter(adapter);
-//}
-//
-//@Override
-//public void setPresenter(SourceContract.Presenter presenter) {
-//    this.presenter = presenter;
-//}
-//
-//@Override
-//public void updateView(SourceResponse list) {
-//    adapter.clearData();
-//    adapter.setItems(list.sources);
-//}
-//}

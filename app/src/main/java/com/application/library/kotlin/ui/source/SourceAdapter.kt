@@ -12,6 +12,7 @@ import com.application.library.kotlin.data.api.model.SourceResponse
 /**
  * Created by eminartiys on 8/11/17.
  */
+
 class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
     private var items : List<SourceResponse.Sources>? = null

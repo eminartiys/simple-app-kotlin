@@ -7,6 +7,7 @@ import retrofit2.http.GET
 /**
  * Created by eminartiys on 8/5/17.
  */
+
 interface SourceService {
 
     @GET("sources")

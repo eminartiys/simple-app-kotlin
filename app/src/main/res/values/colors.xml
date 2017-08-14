@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FE5067</color>
-    <color name="colorPrimaryDark">#BBFE5067</color>
-    <color name="colorAccent">#BBFE506F</color>
+    <color name="colorPrimary">#78C333</color>
+    <color name="colorPrimaryDark">#BB78C333</color>
+    <color name="colorAccent">#BB78C333</color>
+
+    <!--THEME-->
+    <color name="background">@color/white</color>
+    <color name="toolbar_color">@color/colorPrimaryDark</color>
+    <color name="toolbar_color_inverse">@color/white</color>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>
