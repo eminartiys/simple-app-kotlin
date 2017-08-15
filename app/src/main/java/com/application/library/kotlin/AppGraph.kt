@@ -1,5 +1,6 @@
 package com.application.library.kotlin
 
+import com.application.library.kotlin.ui.news.NewsActivity
 import com.application.library.kotlin.ui.source.SourceActivity
 
 /**
@@ -11,4 +12,6 @@ interface AppGraph {
     fun inject(app: App)
 
     fun inject(sourceActivity: SourceActivity)
+
+    fun inject(newsActivity: NewsActivity)
 }

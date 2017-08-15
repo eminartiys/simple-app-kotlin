@@ -35,10 +35,9 @@ ext {
     retrofitVersion = "2.2.0"
     okHttpVersion = "3.6.0"
     okHttpAndroidSupportVersion = "2.4.0"
-    daggerVersion = "2.5"
+    daggerVersion = "2.11"
     supportLibraryVersion = '25.3.1'
     sqlbriteVersion = "1.1.1"
-    butterKnifeVersion = "7.0.1"
 }
 
 dependencies {
@@ -50,7 +49,11 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.google.dagger:dagger-android:$daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
@@ -64,8 +67,6 @@ dependencies {
     compile "com.squareup.okhttp:okhttp-android-support:$okHttpAndroidSupportVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
     compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$okhttp3AdapterVersion"
-
-    compile "com.jakewharton:butterknife:$butterKnifeVersion"
 
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"

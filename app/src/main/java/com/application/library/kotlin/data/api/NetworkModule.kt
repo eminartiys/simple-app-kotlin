@@ -2,6 +2,7 @@ package com.application.library.kotlin
 
 import com.application.library.kotlin.data.api.AutoValueAdapterFactory
 import com.application.library.kotlin.data.api.NetworkConfig
+import com.application.library.kotlin.data.api.service.NewsService
 import com.application.library.kotlin.data.api.service.SourceService
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -60,5 +61,10 @@ class NetworkModule () {
     @Provides
     internal  fun provideSourceService(retrofit: Retrofit) : SourceService {
         return retrofit.create<SourceService>(SourceService::class.java)
+    }
+
+    @Provides
+    internal  fun provideNewsService(retrofit: Retrofit) : NewsService {
+        return retrofit.create<NewsService>(NewsService::class.java)
     }
 }

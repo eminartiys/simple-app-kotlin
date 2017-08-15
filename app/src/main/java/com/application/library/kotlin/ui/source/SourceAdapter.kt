@@ -17,6 +17,17 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
     private var items : List<SourceResponse.Sources>? = null
 
+    private var clickListener : ItemClickListener? = null
+
+    fun setClickListener(clickListener: ItemClickListener) {
+        this.clickListener = clickListener
+    }
+
+    fun getClickListener() : ItemClickListener? {
+        return clickListener
+    }
+
+
     fun setItems(items: List<SourceResponse.Sources>) {
         this.items = items
         notifyItemRangeInserted(0, items.size)
@@ -30,6 +41,11 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
     override fun onBindViewHolder(holder: SourceViewHolder, position: Int) {
         holder.bindView(items!![position])
+
+        holder.itemView.setOnClickListener {
+            if (getClickListener() != null)
+                getClickListener()!!.onItemClickListener(items!![position])
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SourceViewHolder {
@@ -81,6 +97,10 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
 
         }
+    }
+
+    interface ItemClickListener {
+        fun onItemClickListener(item: SourceResponse.Sources)
     }
 
 }

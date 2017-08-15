@@ -1,5 +1,6 @@
 package com.application.library.kotlin.ui.source
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -10,6 +11,7 @@ import com.application.library.kotlin.Injector
 import com.application.library.kotlin.R
 import com.application.library.kotlin.data.api.model.SourceResponse
 import com.application.library.kotlin.data.repository.source.SourceRepository
+import com.application.library.kotlin.ui.news.NewsActivity
 import com.application.library.kotlin.ui.source.SourceContract.Presenter
 import javax.inject.Inject
 
@@ -43,15 +45,21 @@ class SourceActivity() : AppCompatActivity(), SourceContract.View {
 
         SourcePresenter(this, repository)
 
-        list.adapter = adapter
-        val layoutManager = GridLayoutManager(this, 2)
-        list.layoutManager = layoutManager
+        adapter.setClickListener(object: SourceAdapter.ItemClickListener{
+            override fun onItemClickListener(item: SourceResponse.Sources) {
+                val intent = Intent(applicationContext, NewsActivity::class.java)
+                intent.putExtra("source", item.name)
+                startActivity(intent)
+            }
 
-        presenter.getData()
+        })
+        list.adapter = adapter
+        list.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
+        presenter.start()
     }
 
     override fun updateView(list: SourceResponse) {
-
+        adapter.clearItems()
         adapter.setItems(list.sources)
     }
 

@@ -1,4 +1,4 @@
-package com.application.library.kotlin.ui
+package com.application.library.kotlin
 
 /**
  * Created by eminartiys on 8/4/17.

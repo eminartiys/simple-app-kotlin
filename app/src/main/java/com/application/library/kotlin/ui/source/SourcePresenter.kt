@@ -16,6 +16,9 @@ class SourcePresenter(private val view : SourceContract.View,
         this.view.setPresenter(this)
     }
 
+    override fun start() {
+       getData()
+    }
 
     override fun getData() {
         repository.getSource(object : SourceDataSource.LoadDataCallback {
