@@ -2,10 +2,8 @@ package com.application.library.kotlin.ui.news
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
+import kotlinx.android.synthetic.main.activity_news.*
 import android.view.MenuItem
 import android.view.View
 import com.application.library.kotlin.Injector
@@ -18,18 +16,6 @@ import javax.inject.Inject
 class NewsActivity : AppCompatActivity(), NewsContract.View {
 
     @Inject lateinit var repository : NewsRepository
-
-    private val toolbar : Toolbar by lazy {
-        findViewById(R.id.toolbar) as Toolbar
-    }
-
-    private val list : RecyclerView by lazy {
-        findViewById(R.id.list) as RecyclerView
-    }
-
-    private val empty : ConstraintLayout by lazy {
-        findViewById(R.id.empty_view) as ConstraintLayout
-    }
 
     private val adapter = NewsAdapter()
 
@@ -45,14 +31,14 @@ class NewsActivity : AppCompatActivity(), NewsContract.View {
 
         NewsPresenter(this, repository)
 
-        list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(this)
+        this.list.adapter = adapter
+        this.list.layoutManager = LinearLayoutManager(this)
         presenter.start()
 
     }
 
     fun setupToolbar() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(this.toolbar)
         val actionBar = supportActionBar
                 ?: throw IllegalStateException("Action bar must be not null")
 
@@ -79,8 +65,8 @@ class NewsActivity : AppCompatActivity(), NewsContract.View {
     }
 
     override fun handleError() {
-        list.visibility = View.GONE
-        empty.visibility = View.VISIBLE
+        this.list.visibility = View.GONE
+        this.empty_view.visibility = View.VISIBLE
     }
 
     override fun getCurrentSource(): String {

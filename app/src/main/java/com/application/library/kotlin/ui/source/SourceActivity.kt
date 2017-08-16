@@ -1,11 +1,11 @@
 package com.application.library.kotlin.ui.source
 
+import kotlinx.android.synthetic.main.activity_source.*
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import com.application.library.kotlin.Injector
 
 import com.application.library.kotlin.R
@@ -19,17 +19,10 @@ import javax.inject.Inject
  * Created by eminartiys on 8/4/17.
  */
 
-class SourceActivity() : AppCompatActivity(), SourceContract.View {
+class SourceActivity : AppCompatActivity(), SourceContract.View {
 
     @Inject lateinit var repository : SourceRepository
 
-    private val toolbar : Toolbar by lazy {
-       findViewById(R.id.toolbar) as Toolbar
-    }
-
-    private val list : RecyclerView by lazy {
-        findViewById(R.id.list) as RecyclerView
-    }
 
     private val adapter = SourceAdapter()
 
@@ -39,7 +32,7 @@ class SourceActivity() : AppCompatActivity(), SourceContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_source)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(this.toolbar)
 
         Injector.obtain(this)!!.inject(this)
 
@@ -53,8 +46,8 @@ class SourceActivity() : AppCompatActivity(), SourceContract.View {
             }
 
         })
-        list.adapter = adapter
-        list.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
+        this.list.adapter = adapter
+        this.list.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
         presenter.start()
     }
 

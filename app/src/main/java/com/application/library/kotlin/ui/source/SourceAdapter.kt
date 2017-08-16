@@ -1,13 +1,12 @@
 package com.application.library.kotlin.ui.source
 
-import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.application.library.kotlin.R
 import com.application.library.kotlin.data.api.model.SourceResponse
+import kotlinx.android.synthetic.main.view_source_item.view.*
 
 /**
  * Created by eminartiys on 8/11/17.
@@ -62,39 +61,26 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
         var sourceItem: SourceResponse.Sources? = null
 
-        private val titleView : TextView? by lazy {
-            itemView.findViewById(R.id.title) as TextView?
-        }
-
-        private val categoryView : TextView? by lazy {
-            itemView.findViewById(R.id.category) as TextView?
-        }
-
-        private val descriptionView : TextView? by lazy {
-            itemView.findViewById(R.id.description) as TextView?
-        }
-
         fun bindView(sourceItem: SourceResponse.Sources) : Unit {
             this.sourceItem = sourceItem
 
             if (sourceItem.name == null) {
-                titleView!!.visibility = View.GONE
+                itemView.title.visibility = View.GONE
             } else {
-                titleView!!.text = sourceItem.name
+                itemView.title.text = sourceItem.name
             }
 
             if (sourceItem.category == null) {
-                categoryView!!.visibility = View.GONE
+                itemView.category.visibility = View.GONE
             } else {
-                categoryView!!.text = sourceItem.category
+                itemView.category.text = sourceItem.category
             }
 
             if (sourceItem.description == null) {
-                descriptionView!!.visibility = View.GONE
+                itemView.description.visibility = View.GONE
             } else {
-                descriptionView!!.text = sourceItem.description
+                itemView.description.text = sourceItem.description
             }
-
 
         }
     }

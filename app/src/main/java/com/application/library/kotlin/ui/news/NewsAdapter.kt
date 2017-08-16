@@ -4,11 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.application.library.kotlin.R
 import com.application.library.kotlin.data.api.model.NewsResponse
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.view_news_item.view.*
 
 /**
  * Created by eminartiys on 8/15/17.
@@ -45,53 +44,37 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
         var newsItem: NewsResponse.News? = null
 
-        private val imageView: ImageView? by lazy {
-            itemView.findViewById(R.id.image) as ImageView?
-        }
-
-        private val titleView: TextView? by lazy {
-            itemView.findViewById(R.id.title) as TextView?
-        }
-
-        private val authorView: TextView? by lazy {
-            itemView.findViewById(R.id.author) as TextView?
-        }
-
-        private val descriptionView: TextView? by lazy {
-            itemView.findViewById(R.id.description) as TextView?
-        }
-
 
         fun bindView(newsItem: NewsResponse.News?) : Unit {
             this.newsItem = newsItem
 
             if (newsItem!!.title == null) {
-                titleView!!.visibility = View.GONE
+                itemView.title.visibility = View.GONE
             } else {
-                titleView!!.text = newsItem!!.title
+                itemView.title.text = newsItem!!.title
             }
 
             if (newsItem!!.author == null) {
-                authorView!!.visibility = View.GONE
+                itemView.author.visibility = View.GONE
             } else {
-                authorView!!.text = newsItem!!.author
+                itemView.author.text = newsItem!!.author
             }
 
             if (newsItem!!.description == null) {
-                descriptionView!!.visibility = View.GONE
+                itemView.description.visibility = View.GONE
             } else {
-                descriptionView!!.text = newsItem!!.description
+                itemView.description.text = newsItem!!.description
             }
 
             if (newsItem!!.urlToImage == null) {
-                imageView!!.visibility = View.GONE
+                itemView.image.visibility = View.GONE
             } else {
                 Picasso.with(itemView.context)
                         .load(newsItem!!.urlToImage)
                         .fit()
                         .centerCrop()
                         .noFade()
-                        .into(imageView)
+                        .into(itemView.image)
             }
 
         }
