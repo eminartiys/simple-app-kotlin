@@ -13,6 +13,9 @@ import com.application.library.kotlin.data.api.model.NewsResponse
 import com.application.library.kotlin.data.repository.news.NewsRepository
 import javax.inject.Inject
 
+/**
+ * Created by eminartiys on 8/12/17.
+ */
 class NewsActivity : AppCompatActivity(), NewsContract.View {
 
     @Inject lateinit var repository : NewsRepository

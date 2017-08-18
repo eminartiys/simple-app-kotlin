@@ -18,7 +18,6 @@ import javax.inject.Inject
 /**
  * Created by eminartiys on 8/4/17.
  */
-
 class SourceActivity : AppCompatActivity(), SourceContract.View {
 
     @Inject lateinit var repository : SourceRepository
@@ -46,6 +45,7 @@ class SourceActivity : AppCompatActivity(), SourceContract.View {
             }
 
         })
+
         this.list.adapter = adapter
         this.list.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
         presenter.start()

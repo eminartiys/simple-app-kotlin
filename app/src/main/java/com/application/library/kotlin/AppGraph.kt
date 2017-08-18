@@ -6,7 +6,6 @@ import com.application.library.kotlin.ui.source.SourceActivity
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 interface AppGraph {
 
     fun inject(app: App)

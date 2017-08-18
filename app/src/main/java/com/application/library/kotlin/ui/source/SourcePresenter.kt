@@ -7,7 +7,6 @@ import com.application.library.kotlin.data.repository.source.SourceRepository
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 class SourcePresenter(private val view : SourceContract.View,
                       private val repository: SourceRepository)
     : SourceContract.Presenter {

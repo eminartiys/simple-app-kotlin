@@ -3,7 +3,7 @@
 
     <string name="no_article">Article Not Found</string>
 
-    <string name="source">Source</string>
+    <string name="source">Source News</string>
     <string name="news">News</string>
     <string name="title_activity_main">MainActivity</string>
 </resources>

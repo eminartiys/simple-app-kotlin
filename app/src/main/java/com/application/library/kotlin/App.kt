@@ -6,7 +6,6 @@ import android.content.Context
 /**
  * Created by eminartiys on 8/4/17.
  */
-
 class App : Application() {
 
     internal var injector: AppGraph? = null

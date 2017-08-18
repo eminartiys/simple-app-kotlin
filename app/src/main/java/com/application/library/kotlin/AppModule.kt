@@ -7,7 +7,6 @@ import javax.inject.Singleton
 /**
  * Created by eminartiys on 8/4/17.
  */
-
 @Module
 class AppModule (val application : App) {
 

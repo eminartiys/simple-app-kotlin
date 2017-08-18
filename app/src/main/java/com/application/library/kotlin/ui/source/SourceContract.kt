@@ -7,7 +7,6 @@ import com.application.library.kotlin.BaseView
 /**
  * Created by eminartiys on 8/4/17.
  */
-
 interface SourceContract {
 
     interface View : BaseView<Presenter> {

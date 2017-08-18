@@ -9,7 +9,6 @@ import retrofit2.Response
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 class RemoteSourceDataSource(var sourceService: SourceService) : SourceDataSource {
 
     override fun getSource(callback: SourceDataSource.LoadDataCallback) {

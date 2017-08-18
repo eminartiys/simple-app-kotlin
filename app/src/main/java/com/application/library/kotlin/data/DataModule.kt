@@ -13,7 +13,6 @@ import javax.inject.Singleton
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 @Module
 class DataModule() {
     @Provides

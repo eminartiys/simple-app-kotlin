@@ -5,7 +5,6 @@ import com.application.library.kotlin.data.api.model.SourceResponse
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 class SourceRepository (var remoteDataSource: RemoteSourceDataSource) : SourceDataSource {
 
     override fun getSource(callback: SourceDataSource.LoadDataCallback) {

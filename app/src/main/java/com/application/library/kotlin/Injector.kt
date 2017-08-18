@@ -5,7 +5,6 @@ import android.content.Context
 /**
  * Created by eminartiys on 8/5/17.
  */
-
 object Injector {
 
     fun obtain(context: Context): AppGraph? {
