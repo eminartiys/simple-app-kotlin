@@ -48,6 +48,7 @@ class NewsActivity : AppCompatActivity(), NewsContract.View {
         actionBar.setDisplayShowHomeEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.title = getCurrentSource()
+        actionBar.setTitle(actionBar.title)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

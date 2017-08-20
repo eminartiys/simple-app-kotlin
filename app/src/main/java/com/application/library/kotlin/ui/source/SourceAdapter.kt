@@ -64,23 +64,9 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
         fun bindView(sourceItem: SourceResponse.Sources) : Unit {
             this.sourceItem = sourceItem
 
-            if (sourceItem.name == null) {
-                itemView.title.visibility = View.GONE
-            } else {
-                itemView.title.text = sourceItem.name
-            }
-
-            if (sourceItem.category == null) {
-                itemView.category.visibility = View.GONE
-            } else {
-                itemView.category.text = sourceItem.category
-            }
-
-            if (sourceItem.description == null) {
-                itemView.description.visibility = View.GONE
-            } else {
-                itemView.description.text = sourceItem.description
-            }
+            sourceItem.name?.let { itemView.title.text = sourceItem.name }
+            sourceItem.category?.let { itemView.category.text = sourceItem.category }
+            sourceItem.description?.let { itemView.description.text = sourceItem.description }
 
         }
     }

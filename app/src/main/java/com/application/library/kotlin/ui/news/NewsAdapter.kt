@@ -44,31 +44,14 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
         var newsItem: NewsResponse.News? = null
 
-
         fun bindView(newsItem: NewsResponse.News?) : Unit {
             this.newsItem = newsItem
 
-            if (newsItem!!.title == null) {
-                itemView.title.visibility = View.GONE
-            } else {
-                itemView.title.text = newsItem!!.title
-            }
+            newsItem!!.title?.let { itemView.title.text = newsItem!!.title }
+            newsItem!!.author?.let { itemView.author.text = newsItem!!.author }
+            newsItem!!.description?.let { itemView.description.text = newsItem!!.description }
 
-            if (newsItem!!.author == null) {
-                itemView.author.visibility = View.GONE
-            } else {
-                itemView.author.text = newsItem!!.author
-            }
-
-            if (newsItem!!.description == null) {
-                itemView.description.visibility = View.GONE
-            } else {
-                itemView.description.text = newsItem!!.description
-            }
-
-            if (newsItem!!.urlToImage == null) {
-                itemView.image.visibility = View.GONE
-            } else {
+            newsItem!!.urlToImage?.let {
                 Picasso.with(itemView.context)
                         .load(newsItem!!.urlToImage)
                         .fit()
