@@ -1,1 +1,1 @@
-# simple-library-app-kotlin
+# simple-app-kotlin
