@@ -21,8 +21,8 @@ The main source folder with structure below:
 - `ui/` – . contains main UI (activity and fragment) and related contract for the related view
 - `widget/` – contains view that exist in the app like viewholder, custom view, and etc.
 
-# Environment
+## Environment
 This code is built on `Android Studio` with minSdkVersion 19 is `19`, and written in `Kotlin
 
-# Author
+## Author
 Created by [Eminarti Sianturi](https://www.linkedin.com/in/eminarti-sianturi/). Contact me at eminartiys@gmail.com
