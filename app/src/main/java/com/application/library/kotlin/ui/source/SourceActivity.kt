@@ -36,6 +36,11 @@ class SourceActivity : AppCompatActivity(), SourceViewContract {
         presenter.loadSource()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.cancelLoadSource()
+    }
+
     private fun setupView() {
         adapter.setClickListener(object : SourceAdapter.ItemClickListener {
             override fun onItemClickListener(item: SourceResponse.Sources) {

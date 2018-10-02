@@ -1,5 +1,6 @@
 package com.application.library.kotlin.presenter.source
 
+import com.application.library.kotlin.data.scheduler.SchedulerInterface
 import com.application.library.kotlin.repository.source.SourceRepository
 import com.application.library.kotlin.ui.source.SourceViewContract
 import io.reactivex.disposables.Disposable
@@ -10,7 +11,8 @@ import javax.inject.Inject
  * Created by eminartiys on 8/5/17.
  */
 class SourcePresenter @Inject
-    constructor(private val repository: SourceRepository): SourcePresenterContract {
+    constructor(private val repository: SourceRepository,
+                private val schedulerProvider: SchedulerInterface): SourcePresenterContract {
 
     private lateinit var view: SourceViewContract
     private var disposable: Disposable? = null
@@ -32,6 +34,8 @@ class SourcePresenter @Inject
 
     override fun loadSource() {
         disposable = repository.getSource()
+                .observeOn(schedulerProvider.ui())
+                .subscribeOn(schedulerProvider.io())
                 .subscribe({
                     sources -> view.showSources(sources) }, {
                 })

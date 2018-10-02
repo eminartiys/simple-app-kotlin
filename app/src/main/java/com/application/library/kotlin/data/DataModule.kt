@@ -2,6 +2,8 @@ package com.application.library.kotlin.data
 
 import com.application.library.kotlin.data.api.service.NewsService
 import com.application.library.kotlin.data.api.service.SourceService
+import com.application.library.kotlin.data.scheduler.SchedulerInterface
+import com.application.library.kotlin.data.scheduler.SchedulerProvider
 import com.application.library.kotlin.repository.news.NewsRepository
 import com.application.library.kotlin.repository.news.RemoteNewsDataSource
 import com.application.library.kotlin.repository.source.RemoteSourceDataSource
@@ -40,5 +42,11 @@ class DataModule() {
     internal fun provideNewsRepository(remoteNewsDataSource:
                                            RemoteNewsDataSource): NewsRepository {
         return NewsRepository(remoteNewsDataSource)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideScheduler(): SchedulerInterface {
+        return SchedulerProvider.getInstance()
     }
 }

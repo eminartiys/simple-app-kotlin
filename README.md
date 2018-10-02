@@ -14,7 +14,7 @@ This project using MVP, Repository Pattern and RxJava2 + TDD.
 TDD, in short `a development environment where you write test cases first of your code first, not implementation`. You can find more [here](https://www.tutorialspoint.com/software_testing_dictionary/test_driven_development.htm).
 
 ## Folder Structure
-The main source folder is located at `...` with structure below:
+The main source folder with structure below:
 - `model/` – contains models/entities that exist in the app.
 - `presenter/` – contains presenter of each related view that manages events that translates into routing, inputs or output
 - `repository/` – contains all business logic, API and local data managements.
