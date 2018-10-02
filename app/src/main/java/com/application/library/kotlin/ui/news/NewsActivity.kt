@@ -1,28 +1,25 @@
 package com.application.library.kotlin.ui.news
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_news.*
 import android.view.MenuItem
 import android.view.View
 import com.application.library.kotlin.Injector
-
 import com.application.library.kotlin.R
-import com.application.library.kotlin.data.api.model.NewsResponse
-import com.application.library.kotlin.data.repository.news.NewsRepository
+import com.application.library.kotlin.model.NewsResponse
+import com.application.library.kotlin.presenter.news.NewsPresenter
+import kotlinx.android.synthetic.main.activity_news.*
 import javax.inject.Inject
 
 /**
  * Created by eminartiys on 8/12/17.
  */
-class NewsActivity : AppCompatActivity(), NewsContract.View {
+class NewsActivity : AppCompatActivity(), NewsViewContract {
 
-    @Inject lateinit var repository : NewsRepository
+    @Inject lateinit var presenter: NewsPresenter
 
     private val adapter = NewsAdapter()
-
-    private lateinit var presenter : NewsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +29,11 @@ class NewsActivity : AppCompatActivity(), NewsContract.View {
 
         Injector.obtain(this)!!.inject(this)
 
-        NewsPresenter(this, repository)
-
         this.list.adapter = adapter
         this.list.layoutManager = LinearLayoutManager(this)
-        presenter.start()
 
+        presenter.setView(this)
+        presenter.loadNews(getCurrentSource())
     }
 
     fun setupToolbar() {
@@ -59,11 +55,7 @@ class NewsActivity : AppCompatActivity(), NewsContract.View {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun setPresenter(presenter: NewsContract.Presenter) {
-        this.presenter = presenter
-    }
-
-    override fun updateView(list: NewsResponse) {
+    override fun showNews(list: NewsResponse) {
         adapter.clearItems()
         adapter.setItems(list.articles)
     }

@@ -2,17 +2,16 @@ package com.application.library.kotlin.ui.source
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.application.library.kotlin.R
-import com.application.library.kotlin.data.api.model.SourceResponse
-import kotlinx.android.synthetic.main.view_source_item.view.*
+import com.application.library.kotlin.model.SourceResponse
+import com.application.library.kotlin.widget.viewholder.SourceViewHolder
 
 /**
  * Created by eminartiys on 8/11/17.
  */
 
-class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
+class SourceAdapter : RecyclerView.Adapter<SourceViewHolder>() {
 
     private var items : List<SourceResponse.Sources>? = null
 
@@ -48,27 +47,12 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SourceViewHolder {
-        return SourceViewHolder(LayoutInflater.from(
-                        parent!!.context).inflate(R.layout.view_source_item, parent, false))
+        return SourceViewHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_source_item, parent, false))
     }
 
     override fun getItemCount(): Int {
        return items?.size ?:0
-    }
-
-    class SourceViewHolder internal constructor (itemView : View)
-        : RecyclerView.ViewHolder(itemView) {
-
-        var sourceItem: SourceResponse.Sources? = null
-
-        fun bindView(sourceItem: SourceResponse.Sources) : Unit {
-            this.sourceItem = sourceItem
-
-            sourceItem.name?.let { itemView.title.text = sourceItem.name }
-            sourceItem.category?.let { itemView.category.text = sourceItem.category }
-            sourceItem.description?.let { itemView.description.text = sourceItem.description }
-
-        }
     }
 
     interface ItemClickListener {

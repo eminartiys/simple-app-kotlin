@@ -1,7 +1,6 @@
 package com.application.library.kotlin
 
 import com.application.library.kotlin.data.api.AutoValueAdapterFactory
-import com.application.library.kotlin.data.api.NetworkConfig
 import com.application.library.kotlin.data.api.service.NewsService
 import com.application.library.kotlin.data.api.service.SourceService
 import com.google.gson.GsonBuilder
@@ -10,8 +9,8 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 /**
  * Created by eminartiys on 8/4/17.
@@ -53,6 +52,7 @@ class NetworkModule () {
         return Retrofit.Builder()
                 .baseUrl("https://newsapi.org/v1/")
                 .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(converterFactory)
                 .build()
     }

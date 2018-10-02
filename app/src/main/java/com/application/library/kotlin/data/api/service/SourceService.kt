@@ -1,6 +1,7 @@
 package com.application.library.kotlin.data.api.service
 
-import com.application.library.kotlin.data.api.model.SourceResponse
+import com.application.library.kotlin.model.SourceResponse
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -10,6 +11,6 @@ import retrofit2.http.GET
 interface SourceService {
 
     @GET("sources")
-    fun getSources() : Call<SourceResponse>
+    fun getSources() : Single<SourceResponse>
 
 }

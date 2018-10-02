@@ -2,10 +2,10 @@ package com.application.library.kotlin.data
 
 import com.application.library.kotlin.data.api.service.NewsService
 import com.application.library.kotlin.data.api.service.SourceService
-import com.application.library.kotlin.data.repository.news.NewsRepository
-import com.application.library.kotlin.data.repository.news.RemoteNewsDataSource
-import com.application.library.kotlin.data.repository.source.RemoteSourceDataSource
-import com.application.library.kotlin.data.repository.source.SourceRepository
+import com.application.library.kotlin.repository.news.NewsRepository
+import com.application.library.kotlin.repository.news.RemoteNewsDataSource
+import com.application.library.kotlin.repository.source.RemoteSourceDataSource
+import com.application.library.kotlin.repository.source.SourceRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
