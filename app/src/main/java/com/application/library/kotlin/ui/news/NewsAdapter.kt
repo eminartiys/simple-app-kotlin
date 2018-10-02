@@ -30,7 +30,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         holder.bindView(items!![position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NewsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(LayoutInflater.from(
                 parent!!.context).inflate(R.layout.view_news_item, parent, false))
     }

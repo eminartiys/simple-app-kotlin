@@ -15,7 +15,7 @@ class RemoteSourceDataSource(var sourceService: SourceService) : SourceDataSourc
         sourceService.getSources().enqueue(object : Callback<SourceResponse> {
             override fun onResponse(call: Call<SourceResponse>,
                                     response: Response<SourceResponse>) {
-                callback.onDataLoaded(response.body())
+                callback.onDataLoaded(response.body()!!)
             }
 
             override fun onFailure(call: Call<SourceResponse>, t: Throwable) {

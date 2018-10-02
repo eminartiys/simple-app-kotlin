@@ -47,7 +47,7 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SourceViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SourceViewHolder {
         return SourceViewHolder(LayoutInflater.from(
                         parent!!.context).inflate(R.layout.view_source_item, parent, false))
     }

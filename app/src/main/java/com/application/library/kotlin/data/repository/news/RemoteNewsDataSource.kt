@@ -17,7 +17,7 @@ class RemoteNewsDataSource(var newsService: NewsService) : NewsDataSource {
         newsService.getNews(source, API_KEY).enqueue(object : Callback<NewsResponse> {
             override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
                 when {
-                    response.isSuccessful   -> callback.onDataLoaded(response.body())
+                    response.isSuccessful   -> callback.onDataLoaded(response.body()!!)
                     else                    -> callback.onError(Throwable())
                 }
             }
