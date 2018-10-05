@@ -22,7 +22,7 @@ class SourcePresenter @Inject
     }
 
     override fun cancelLoadSource() {
-        Timber.i("Undispose")
+        Timber.i("Dispose")
 
         disposable?.let {
             if (!disposable!!.isDisposed) {
@@ -40,6 +40,5 @@ class SourcePresenter @Inject
                     sources -> view.showSources(sources) }, {
                 })
     }
-
 }
 

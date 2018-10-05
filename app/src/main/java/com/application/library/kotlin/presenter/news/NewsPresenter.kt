@@ -22,7 +22,7 @@ class NewsPresenter @Inject
     }
 
     override fun cancelLoadNews() {
-        Timber.i("Undispose")
+        Timber.i("Dispose")
 
         disposable?.let {
             if (!disposable!!.isDisposed) {

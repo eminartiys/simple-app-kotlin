@@ -14,9 +14,10 @@ import org.mockito.MockitoAnnotations
 
 class NewsPresenterTest {
 
-    private val SOURCE = "TECHCRUNCH"
+    private val SOURCEFOUND = "TECHCRUNCH"
+    private val SOURCENOTFOUND = "NEWS"
     private val ITEMS = emptyList<NewsResponse.News>()
-    private val RESPONSE = NewsResponse("Success", "", "", SOURCE, "", ITEMS)
+    private val RESPONSE = NewsResponse("Success", "", "", SOURCEFOUND, "", ITEMS)
     private val ERROR = Throwable("News Not Found")
 
     @Mock private var view: NewsViewContract? = null
@@ -37,18 +38,18 @@ class NewsPresenterTest {
 
     @Test
     fun testLoadNewsBySources_Success() {
-        Mockito.`when`(repository!!.getNews(SOURCE)).thenReturn(Single.just(RESPONSE))
+        Mockito.`when`(repository!!.getNews(SOURCEFOUND)).thenReturn(Single.just(RESPONSE))
 
-        presenter.loadNews(SOURCE)
+        presenter.loadNews(SOURCEFOUND)
 
         Mockito.verify(view!!).showNews(RESPONSE)
     }
 
     @Test
     fun testLoadNewsBySources_NotFound() {
-        Mockito.`when`(repository!!.getNews(SOURCE)).thenReturn(Single.error(ERROR))
+        Mockito.`when`(repository!!.getNews(SOURCENOTFOUND)).thenReturn(Single.error(ERROR))
 
-        presenter.loadNews(SOURCE)
+        presenter.loadNews(SOURCENOTFOUND)
 
         Mockito.verify(view!!).handleError()
     }
