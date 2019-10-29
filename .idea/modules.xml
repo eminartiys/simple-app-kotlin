@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project-simple-app-kotlin.iml" filepath="$PROJECT_DIR$/Project-simple-app-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-app-kotlin.iml" filepath="$PROJECT_DIR$/simple-app-kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/simple-app-kotlin-app.iml" filepath="$PROJECT_DIR$/app/simple-app-kotlin-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-library-app-kotlin.iml" filepath="$PROJECT_DIR$/simple-library-app-kotlin.iml" />
     </modules>
   </component>

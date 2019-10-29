@@ -2,13 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: '../jacoco.gradle'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.application.library.kotlin"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 kapt {
@@ -27,7 +34,7 @@ kapt {
 
 ext {
     picassoVersion = "2.5.2"
-    timberVersion = "4.7.0"
+    timberVersion = "4.7.1"
     autoValueVersion = "1.5"
     rxJavaVersion = "2.2.2"
     rxAndroidVersion = "2.1.0"
@@ -36,8 +43,8 @@ ext {
     mockitoVersion = "2.10.0"
     retrofitVersion = "2.4.0"
     okHttpVersion = "3.10.0"
-    daggerVersion = "2.17"
-    supportLibraryVersion = "27.1.1"
+    daggerVersion = "2.24"
+    supportLibraryVersion = "28.0.0"
     jUnitVersion = "4.12"
     archVersion = "1.1.1"
 }
@@ -93,6 +100,11 @@ dependencies {
     // Arch
     implementation "android.arch.core:runtime:$archVersion"
     implementation "android.arch.core:common:$archVersion"
+
+    testImplementation "io.mockk:mockk:1.9.1"
+    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.3.2'
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    testImplementation "org.amshove.kluent:kluent:1.56"
 }
 
 repositories {

@@ -8,8 +8,7 @@ import com.application.library.kotlin.data.repository.news.NewsRepository
  * Created by eminartiys on 8/15/17.
  */
 class NewsPresenter(val view: NewsContract.View,
-                    val repository: NewsRepository)
-    : NewsContract.Presenter {
+                    val repository: NewsRepository) : NewsContract.Presenter {
 
     init {
         this.view.setPresenter(this)
@@ -20,7 +19,7 @@ class NewsPresenter(val view: NewsContract.View,
     }
 
     override fun getData(source: String) {
-        repository.getNews(source, object: NewsDataSource.LoadDataCallback {
+        repository.getNews(source, object : NewsDataSource.LoadDataCallback {
             override fun onDataLoaded(newsResponse: NewsResponse) {
                 view.updateView(newsResponse)
             }
