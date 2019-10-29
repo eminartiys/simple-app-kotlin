@@ -1,0 +1,64 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.4'
+}
+
+android.testOptions {
+    unitTests {
+        includeAndroidResources = true
+    }
+}
+
+tasks.withType(Test) {
+    outputs.upToDateWhen { false }
+    jacoco{
+        includeNoLocationClasses = true
+        destinationFile = file("${project.rootDir}/jacoco/${System.currentTimeMillis()}.exec")
+    }
+}
+
+task jacocoTestReport(type: JacocoReport) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+
+    // List of files which must be excluded from the coverage analysis
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*',
+            'androidx/**/*.*',
+            '**/*Builder.*',
+            '**/*_MembersInjector.class', //Dagger2 generated code
+            '**/*_MembersInjector*.*', //Dagger2 generated code
+            '**/*_*Factory*.*', //Dagger2 generated code
+            '**/*Component*.*', //Dagger2 generated code
+            '**/*Module*.*', //Dagger2 generated code
+            '**/*Parcelable*.*', // Parcel generated code
+            '**/BR.class',
+            '**/databinding/*.*',
+
+
+            '**/*Activity*',
+            '**/*Fragment*',
+            '**/*Application*',
+            '**/*Adapter*'
+    ]
+    def javaClasses = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
+    def kotlinClasses = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+    def javaSrc = "$project.projectDir/src/main/java"
+    def kotlinSrc = "$project.projectDir/src/main/kotlin"
+
+    getSourceDirectories().setFrom(files([javaSrc, kotlinSrc]))
+    getClassDirectories().setFrom(files([javaClasses, kotlinClasses]))
+    getExecutionData().setFrom(fileTree(dir: project.rootDir, includes: [
+            'jacoco/*.exec', 'outputs/code-coverage/connected/*coverage.ec'
+    ]))
+}

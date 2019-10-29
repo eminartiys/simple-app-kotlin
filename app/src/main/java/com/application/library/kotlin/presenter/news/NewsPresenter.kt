@@ -11,8 +11,8 @@ import javax.inject.Inject
  * Created by eminartiys on 8/15/17.
  */
 class NewsPresenter @Inject
-    constructor(private val repository: NewsRepository,
-                private val schedulerProvider: SchedulerInterface): NewsPresenterContract {
+constructor(private val repository: NewsRepository,
+            private val schedulerProvider: SchedulerInterface) : NewsPresenterContract {
 
     private lateinit var view: NewsViewContract
     private var disposable: Disposable? = null
@@ -25,7 +25,7 @@ class NewsPresenter @Inject
         Timber.i("Dispose")
 
         disposable?.let {
-            if (!disposable!!.isDisposed) {
+            if(!disposable!!.isDisposed) {
                 disposable!!.dispose()
                 disposable = null
             }
@@ -36,8 +36,9 @@ class NewsPresenter @Inject
         disposable = repository.getNews(source)
                 .observeOn(schedulerProvider.ui())
                 .subscribeOn(schedulerProvider.io())
-                .subscribe({
-                    news -> view.showNews(news) }, {
+                .subscribe({ news ->
+                    view.showNews(news)
+                }, {
                     view.handleError()
                 })
     }
